@@ -8,3 +8,9 @@ def home(request):
         "articles": Article.objects.filter(status = "p").order_by('-publish')[:3]
     }
     return render(request, "blog/home.html", context)
+
+def detail(request, slug):
+    context = {
+        "article": Article.objects.get(slug = slug)
+    }
+    return render(request, "blog/detail.html", context)
