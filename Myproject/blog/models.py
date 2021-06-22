@@ -5,7 +5,7 @@ from django.utils import timezone
 class Article(models.Model):
     STATUS_CHOICES = (
         ('d', 'Draft'),
-        ('p', 'Publishe'),
+        ('p', 'Publish'),
     )
     title = models.CharField(max_length = 200)
     slug = models.SlugField(max_length = 100, unique = True)
