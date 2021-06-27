@@ -35,6 +35,11 @@
               <a href="#">مهدی</a>
               {{ article.jpublish }}</p>
           </div>
+          <div>
+            {% for cat in article.category.all %}
+              <a href="#">#{{ cat.title }}</a>
+            {% endfor %}
+          </div>
           <hr>
         {% endfor %}
         <!-- Pager -->
