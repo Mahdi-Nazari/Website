@@ -1,10 +1,47 @@
-{% for article in articles %}
-    <center>
-        <article>
-            <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" width="600" height="400">
-            <h1><a href="{% url 'blog:detail' article.slug %}">{{ article.title }}</a></h1>
-            <small>{{ article.publish }}</small>
-            <p>{{ article.description }}</p>
-        </article>
-    </center>
-{% endfor %}
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block main %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{% static 'blog/img/home-bg.jpg' %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>وبلاگ من</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        {% for article in articles %}
+          <div class="post-preview">
+            <a href="{% url 'blog:detail' article.slug %}">
+              <h2 class="post-title">
+                {{ article.title }}
+              </h2>
+              <h3 class="post-subtitle">
+                {{ article.description | truncatewords:30 }}
+              </h3>
+            </a>
+            <p class="post-meta">منتشر شده توسط
+              <a href="#">مهدی</a>
+              {{ article.jpublish }}</p>
+          </div>
+          <hr>
+        {% endfor %}
+        <!-- Pager -->
+        <div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
