@@ -26,3 +26,15 @@ body {
 .pager-button {
     float: left;
 }
+
+.site-heading h1 {
+    font-size: 50px !important;
+}
+
+.post-title {
+    font-size: 28px !important;
+}
+
+.post-subtitle {
+    font-size: 18px;
+}

@@ -11,5 +11,5 @@ def title():
 @register.inclusion_tag("blog/partials/category_navbar.html")
 def category_navbar():
     return {
-        "category": Category.objects.filter(status = True)
+        "category": Category.objects.active()
     }
